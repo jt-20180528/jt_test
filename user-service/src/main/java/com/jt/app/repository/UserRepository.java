@@ -66,4 +66,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Modifying
     @Query(value = "delete from t_user_temp", nativeQuery = true)
     Integer deleteAllTemp();
+
+    boolean existsByLoginName(String loginName);
+
+    User getByUserName(String userName);
 }

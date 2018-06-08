@@ -3,12 +3,13 @@ package com.jt.app.repository;
 
 import com.jt.app.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.Date;
 
-public interface RoleRepository extends JpaRepository<Role, Integer> {
+public interface RoleRepository extends JpaRepository<Role, Integer> ,JpaSpecificationExecutor<Role> {
     //自定义方法
 
     /*@Query(value = "SELECT c.*\n" +

@@ -13,6 +13,7 @@
         <module>common-service</module>
         <module>user-service</module>
         <module>discovery-service</module>
+        <module>redis-service</module>
         <!--<module>webui-service</module>-->
     </modules>
 

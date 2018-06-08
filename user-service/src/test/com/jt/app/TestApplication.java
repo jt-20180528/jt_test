@@ -1,23 +1,27 @@
 package com.jt.app;
 
 import com.jt.app.model.*;
+import com.jt.app.model.mongodb.Order;
+import com.jt.app.redis.service.RedisService;
 import com.jt.app.service.*;
+import com.jt.app.service.mongodb.OrderServiceV1;
 import com.jt.app.util.EncryptUtil;
 import com.jt.app.util.TimeUtil;
+import org.apache.http.util.Asserts;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = {UserApplication.class})
@@ -36,6 +40,14 @@ public class TestApplication {
     private ResourceServiceV1 resourceServiceV1;
     @Autowired
     private RoleResourceServiceV1 roleResourceServiceV1;
+    @Autowired
+    private OrderServiceV1 orderServiceV1;
+    @javax.annotation.Resource
+    private StringRedisTemplate msgTemplate;
+    @Autowired
+    private RedisService redisService;
+    @Value("${spring.redis.topicName}")
+    private String topicName;
 
     @Test
     public void addUserData() {
@@ -360,7 +372,7 @@ public class TestApplication {
         //首先刪除已有t2測試
         final String nameFlag = "-t2-";
         long startTime, endTime = 0;
-        final Integer addNum = 100000;
+        final Integer addNum = 1000000;
         final String tableName = "t_user";
         Integer usersNum = userServiceV1.getCountByNameLike(nameFlag);
         if (usersNum > 0) {
@@ -392,7 +404,7 @@ public class TestApplication {
     @Test
     public void testMultiValueInsertTemp() {
         logger.info("添加t_user_temp表数据！");
-        final Integer addNum = 100000;
+        final Integer addNum = 1000000;
         long startTime, endTime = 0;
         final String nameFlag = "-t3-update-";
         final String tableName = "t_user_temp";
@@ -415,7 +427,7 @@ public class TestApplication {
             logger.info("拼接" + addNum + "条记录花费时间：【" + (endTime - startTime) / 1000 + "】秒");
 
             startTime = System.currentTimeMillis();
-            Integer reslut = userServiceV1.multiValueInsert(tableName,usersSql);
+            Integer reslut = userServiceV1.multiValueInsert(tableName, usersSql);
             endTime = System.currentTimeMillis();
             if (reslut == 1) {
                 logger.info("多值插入【" + addNum + "】成功！");
@@ -438,8 +450,118 @@ public class TestApplication {
         logger.info("同步" + syncNum + "条记录花费时间：【" + (endTime - startTime) / 1000 + "】秒");
     }
 
-    @Test
-    public void testMonAdd1WTime(){
+    //////////////////////测试mongodb数据库///////////////////////////
 
+    /**
+     * 测试mongodb数据库写入定量数据
+     * 追加测试下单放入redis然后异步交给mongodb去入db
+     */
+    @Test
+    public void testMonAdd1WTime() {
+        final int addNum = 1000000;
+        long startTime, endTime = 0;
+        Iterable<Order> orders = this.buildOrderList(addNum);
+        //新增数据前，先刪除所有数据
+        long recodeNum = orderServiceV1.getOrderRepository().count();
+        if (recodeNum > 0) {
+            startTime = System.currentTimeMillis();
+            boolean delFlag = orderServiceV1.deleteAll();
+            endTime = System.currentTimeMillis();
+            logger.info("刪除mongodb数据【" + recodeNum + "】条" + (delFlag ? "成功！耗时【" + (endTime - startTime) / 1000 + "】秒" : "失败！"));
+        }
+        //次出修改，直接调用服务的新增方法
+        startTime = System.currentTimeMillis();
+        Integer orderNum = orderServiceV1.addOrders(orders);
+        endTime = System.currentTimeMillis();
+        //Asserts.check(order_res.size() == addNum, "入库数据返回同预设不一致！");
+        //logger.info("入库" + order_res.size() + "条记录成功，花费时间：【" + (endTime - startTime) / 1000 + "】秒");
+        Asserts.check(addNum == orderNum, "入库数据失败,数量不一致！");
+        logger.info("入库" + addNum + "条记录成功，花费时间：【" + (endTime - startTime) / 1000 + "】秒");
+    }
+
+    public String buildOrderCode() {
+        Long ranDom = new Random(1000000 + 1).nextLong();
+        String currentTime = TimeUtil.ymdHmsNoFormat2str();
+        return currentTime + "-" + ranDom;
+    }
+
+    public Iterable<Order> buildOrderList(Integer addNum) {
+        List<Order> orders = new ArrayList<Order>();
+        Order order = null;
+        for (int i = 0; i < addNum; i++) {
+            String orderCode = this.buildOrderCode();
+            order = new Order();
+            order.setUserId("user-" + i + orderCode);
+            order.setStatus(1);
+            order.setOrderCode(orderCode);
+            order.setCreateTime(TimeUtil.ymdHms2date());
+            orders.add(order);
+        }
+        return (Iterable<Order>) orders;
+    }
+
+    /**
+     * 测试mongodb数据库更新定量数据
+     */
+    @Test
+    public void testMonUpdate1WTime() {
+        final int addNum = 100000;
+        long startTime, endTime = 0;
+        startTime = System.currentTimeMillis();
+        List<Order> orders = orderServiceV1.getOrderRepository().findAll();
+        endTime = System.currentTimeMillis();
+        logger.info("查询数据" + orders.size() + "条记录成功，花费时间：【" + (endTime - startTime) / 1000 + "】秒");
+        for (int i = 0; i < orders.size(); i++) {
+            orders.get(i).setCreateTime(TimeUtil.ymdHms2date());
+            orders.get(i).setOrderCode(this.buildOrderCode());
+            orders.get(i).setStatus(0);
+            orders.get(i).setUserId(orders.get(i).getUserId() + "-update");
+        }
+        startTime = System.currentTimeMillis();
+        List<Order> order_res = orderServiceV1.getOrderRepository().save(orders);
+        endTime = System.currentTimeMillis();
+        Asserts.check(order_res.size() == addNum, "入库数据返回同预设不一致！");
+        logger.info("同步更新" + order_res.size() + "条记录成功，花费时间：【" + (endTime - startTime) / 1000 + "】秒");
+    }
+
+    //添加测试账号
+    @Test
+    public void testAddTestAccount() {
+        final String loginName = "admin";
+        final String loginPass = EncryptUtil.md5Encode("admin");
+        User user = userServiceV1.getUserRepository().getByLoginName(loginName);
+        if (user != null) {
+            User user1 = userServiceV1.getUserRepository().getByLoginNameAndLoginPasswd(loginName, loginPass);
+            if (user1 == null) {
+                user.setLoginPasswd(loginPass);
+                userServiceV1.getUserRepository().saveAndFlush(user);
+            }
+        } else {
+            user = new User();
+            user.setLoginName(loginName);
+            user.setLoginPasswd(EncryptUtil.md5Encode(loginPass));
+            user.setUpdateTime(TimeUtil.ymd2date());
+            user.setUserName("admin");
+            userServiceV1.getUserRepository().saveAndFlush(user);
+        }
+    }
+
+    /**
+     * 测试activemq发布消息
+     */
+    @Test
+    public void testActiveMqPublish(){
+        final int addNum = 1000000;
+        long startTime, endTime = 0;
+        Iterable<Order> orders = this.buildOrderList(addNum);
+        //新增数据前，先刪除所有数据
+        long recodeNum = orderServiceV1.getOrderRepository().count();
+        if (recodeNum > 0) {
+            startTime = System.currentTimeMillis();
+            boolean delFlag = orderServiceV1.deleteAll();
+            endTime = System.currentTimeMillis();
+            logger.info("刪除mongodb数据【" + recodeNum + "】条" + (delFlag ? "成功！耗时【" + (endTime - startTime) / 1000 + "】秒" : "失败！"));
+        }
+        orderServiceV1.addOrdersForAMQ(orders);
     }
 }

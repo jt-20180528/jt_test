@@ -1,6 +1,8 @@
 package com.jt.app.exception;
 
-public class JsonResult {
+import java.io.Serializable;
+
+public class JsonResult implements Serializable {
 
     private Integer resultCode;
     private String resultMsg;

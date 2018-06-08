@@ -49,19 +49,18 @@ public class UserController {
      * 根据账号密码获取用户
      *
      * @param request
-     * @param loginName
-     * @param loginPasswd
+     * @param userName
      * @return
      */
-    @GetMapping("/getUserByNamePasswd/{loginName}/{loginPasswd}")
-    public JsonResult getUserByNamePasswd(HttpServletRequest request, @PathVariable String loginName, @PathVariable String loginPasswd) {
+    @GetMapping("/getByUserName/{userName}")
+    public JsonResult getByUserName(HttpServletRequest request, @PathVariable String userName) {
         JsonResult jsonResult = new JsonResult(request.getRequestURI());
-        User user = userServiceV1.getUserRepository().getByLoginNameAndLoginPasswd(loginName, EncryptUtil.md5Encode(loginPasswd));
+        User user = userServiceV1.getUserRepository().getByUserName(userName);
         jsonResult.setRespCode(RespCode.SUCCESS);
         if (user == null) {
             jsonResult.setRespCode(RespCode.LOGIN_FAIL);
         }
-
+        jsonResult.setResultData(user);
         return jsonResult;
     }
 
