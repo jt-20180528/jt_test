@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta>
+    <meta charset="UTF-8"></meta>
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    $(function() {
+        console.log("abc");
+        $.ajax({url:"http://localhost:8080/login/4",success:function(result){
+                console.log(result);
+                var ws = new WebSocket("ws://localhost:8080/myHandler")
+                ws.onopen = function () {
+                    console.log("onpen");
+                    ws.send("{}");
+                }
+                ws.onclose = function () {
+                    console.log("onclose");
+                }
+
+                ws.onmessage = function (msg) {
+                    console.log(msg.data);
+                }
+            }});
+    })
+</script>
+</body>
+</html>
