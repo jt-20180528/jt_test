@@ -1,0 +1,42 @@
+[mysql]
+default-character-set=utf8
+basedir=/home/mysql/mysql-8.0.11-master
+
+[mysqld]
+datadir=/home/mysql/mysql-8.0.11-master/data
+basedir=/home/mysql/mysql-8.0.11-master
+socket=/home/mysql/mysql-8.0.11-master/tmp/mysql.sock
+default-storage-engine=INNODB
+character_set_server=utf8
+max_allowed_packet=1024M
+port=3306
+default_authentication_plugin=mysql_native_password
+
+#主从配置  
+server_id=1    #服务器 id   
+log-bin=/home/mysql/mysql-8.0.11-master/logs/mysql-bin   #二进制文件存放路径  
+binlog-do-db=jt_test    #待同步的数据库
+log-slave-updates=1
+binlog-ignore-db=information_schema
+binlog-ignore-db=performance_schema
+binlog-ignore-db=mysql
+binlog-ignore-db=sys
+
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+# Settings user and group are ignored when systemd is used.
+# If you need to run mysqld under a different user or group,
+# customize your systemd unit file for mariadb according to the
+# instructions in http://fedoraproject.org/wiki/Systemd
+
+[mysqld_safe]
+log-error=/home/mysql/mysql-8.0.11-master/logs/mysql.log
+pid-file=/home/mysql/mysql-8.0.11-master/mysql.pid
+port=3306
+
+
+#
+# include all files from the config directory
+#
+!includedir /etc/my.cnf.d
+
