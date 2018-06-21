@@ -14,6 +14,7 @@
         <module>user-service</module>
         <module>discovery-service</module>
         <module>redis-service</module>
+        <module>websocket-service</module>
         <!--<module>webui-service</module>-->
     </modules>
 

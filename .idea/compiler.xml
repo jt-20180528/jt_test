@@ -8,7 +8,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="common-service" />
         <module name="discovery-service" />
+        <module name="redis-service" />
         <module name="user-service" />
+        <module name="websocket-service" />
       </profile>
     </annotationProcessing>
   </component>

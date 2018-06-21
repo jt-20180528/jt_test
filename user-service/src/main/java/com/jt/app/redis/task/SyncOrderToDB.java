@@ -1,18 +1,15 @@
 package com.jt.app.redis.task;
 
 import com.jt.app.model.mongodb.Order;
-import com.jt.app.redis.GlobalCacheKey;
 import com.jt.app.redis.MsgReceive;
 import com.jt.app.redis.service.RedisService;
 import com.jt.app.service.mongodb.OrderServiceV1;
-import com.jt.app.util.message.MsgFormat;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
 @Component

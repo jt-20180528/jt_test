@@ -1,0 +1,193 @@
+*********并发为10万数据同步的测试*************
+
+这是第一个从节点查询到记录时间：
+10:23:44 [main] INFO  com.jt.app.TestApplication - 开始阻塞查询时间：1529547824368
+10:24:31 [main] INFO  com.jt.app.TestApplication - 查找到用户名为：用户-t2-0的记录，用户信息：User{id=400001, loginName='root-t2-0', loginPasswd='cb300cf0d7943bb87225d9a105ee9636', userName='用户-t2-0', sex=null, telephone='null', mobilePhone=null, email='广东-广州', address='广东-广州', userStatus=1, lastLoginTime=null, lastLoginIp='null', lastLoginAddr='root-t2-0', createTime=2018-06-21 23:24:20.0, createUser='lj0', updateTime=2018-06-21 23:24:20.0, updateUser='1245282613@qq.com', logoUrl='null'},
+当前时间：1529547871977
+
+这是主节点数据入库时间
+10:24:20 [main] INFO  com.jt.app.TestApplication - 添加t_user表数据！
+10:24:20 [main] INFO  com.jt.app.TestApplication - 拼接100000条记录花费时间：【0】秒
+10:24:26 [main] INFO  com.jt.app.TestApplication - 多值插入【100000】成功！
+10:24:26 [main] INFO  com.jt.app.TestApplication - 添加100000条记录花费时间：【5】秒,当前时间：1529547866231
+
+初步计算出第一个从节点同步到库并查询到数据时间：1529547871977-1529547866231=5476
+转化为秒：5476/1000=5.476秒
+
+--------------------------------------------
+
+这是第二个从节点查询到记录时间：
+10:33:26 [main] INFO  com.jt.app.TestApplication - 开始阻塞查询时间：1529548406814
+10:34:16 [main] INFO  com.jt.app.TestApplication - 查找到用户名为：用户-t2-0的记录，用户信息：User{id=500001, loginName='root-t2-0', loginPasswd='cb300cf0d7943bb87225d9a105ee9636', userName='用户-t2-0', sex=null, telephone='null', mobilePhone=null, email='广东-广州', address='广东-广州', userStatus=1, lastLoginTime=null, lastLoginIp='null', lastLoginAddr='root-t2-0', createTime=2018-06-21 23:34:06.0, createUser='lj0', updateTime=2018-06-21 23:34:06.0, updateUser='1245282613@qq.com', logoUrl='null'},
+当前时间：1529548456464
+
+这是主节点数据入库时间
+10:34:06 [main] INFO  com.jt.app.TestApplication - 添加t_user表数据！
+10:34:07 [main] INFO  com.jt.app.TestApplication - 拼接100000条记录花费时间：【0】秒
+10:34:12 [main] INFO  com.jt.app.TestApplication - 多值插入【100000】成功！
+10:34:12 [main] INFO  com.jt.app.TestApplication - 添加100000条记录花费时间：【5】秒,当前时间：1529548452784
+
+初步计算出第一个从节点同步到库并查询到数据时间：1529548456464-1529548452784=3680
+转化为秒：3680/1000=3.680秒
+
+---------------------------------------------
+
+这是第三个从节点查询到记录时间：
+10:45:12 [main] INFO  com.jt.app.TestApplication - 开始阻塞查询时间：1529549112332
+10:46:40 [main] INFO  com.jt.app.TestApplication - 查找到用户名为：用户-t2-0的记录，用户信息：User{id=600001, loginName='root-t2-0', loginPasswd='cb300cf0d7943bb87225d9a105ee9636', userName='用户-t2-0', sex=null, telephone='null', mobilePhone=null, email='广东-广州', address='广东-广州', userStatus=1, lastLoginTime=null, lastLoginIp='null', lastLoginAddr='root-t2-0', createTime=2018-06-21 10:46:16.0, createUser='lj0', updateTime=2018-06-21 10:46:16.0, updateUser='1245282613@qq.com', logoUrl='null'},
+当前时间：1529549200468
+
+这是主节点数据入库时间
+10:46:16 [main] INFO  com.jt.app.TestApplication - 添加t_user表数据！
+10:46:17 [main] INFO  com.jt.app.TestApplication - 拼接100000条记录花费时间：【0】秒
+10:46:38 [main] INFO  com.jt.app.TestApplication - 多值插入【100000】成功！
+10:46:38 [main] INFO  com.jt.app.TestApplication - 添加100000条记录花费时间：【21】秒,当前时间：1529549198377
+
+初步计算出第一个从节点同步到库并查询到数据时间：1529549200468-1529549198377=2091
+转化为秒：2091/1000=2.091秒
+
+*********并发为20万数据同步的测试*************
+
+这是第一个从节点查询到记录时间：
+11:17:01 [main] INFO  com.jt.app.TestApplication - 开始阻塞查询时间：1529551021126
+11:17:57 [main] INFO  com.jt.app.TestApplication - 查找到用户名为：用户-t2-0的记录，用户信息：User{id=1900001, loginName='root-t2-0', loginPasswd='cb300cf0d7943bb87225d9a105ee9636', userName='用户-t2-0', sex=null, telephone='null', mobilePhone=null, email='广东-广州', address='广东-广州', userStatus=1, lastLoginTime=null, lastLoginIp='null', lastLoginAddr='root-t2-0', createTime=2018-06-22 00:17:40.0, createUser='lj0', updateTime=2018-06-22 00:17:40.0, updateUser='1245282613@qq.com', logoUrl='null'},
+当前时间：1529551077358
+
+这是主节点数据入库时间
+11:17:40 [main] INFO  com.jt.app.TestApplication - 添加t_user表数据！
+11:17:41 [main] INFO  com.jt.app.TestApplication - 拼接200000条记录花费时间：【1】秒
+11:17:50 [main] INFO  com.jt.app.TestApplication - 多值插入【200000】成功！
+11:17:50 [main] INFO  com.jt.app.TestApplication - 添加200000条记录花费时间：【9】秒,当前时间：1529551070850
+
+初步计算出第一个从节点同步到库并查询到数据时间：1529551077358-1529551070850=6508
+转化为秒：6508/1000=6.508秒
+
+-----------------------------------------
+
+这是第二个从节点查询到记录时间：
+11:22:29 [main] INFO  com.jt.app.TestApplication - 开始阻塞查询时间：1529551349315
+11:23:34 [main] INFO  com.jt.app.TestApplication - 查找到用户名为：用户-t2-0的记录，用户信息：User{id=2100001, loginName='root-t2-0', loginPasswd='cb300cf0d7943bb87225d9a105ee9636', userName='用户-t2-0', sex=null, telephone='null', mobilePhone=null, email='广东-广州', address='广东-广州', userStatus=1, lastLoginTime=null, lastLoginIp='null', lastLoginAddr='root-t2-0', createTime=2018-06-22 00:23:15.0, createUser='lj0', updateTime=2018-06-22 00:23:15.0, updateUser='1245282613@qq.com', logoUrl='null'},
+当前时间：1529551414309
+
+这是主节点数据入库时间
+11:23:15 [main] INFO  com.jt.app.TestApplication - 添加t_user表数据！
+11:23:17 [main] INFO  com.jt.app.TestApplication - 拼接200000条记录花费时间：【1】秒
+11:23:27 [main] INFO  com.jt.app.TestApplication - 多值插入【200000】成功！
+11:23:27 [main] INFO  com.jt.app.TestApplication - 添加200000条记录花费时间：【10】秒,当前时间：1529551407406
+
+初步计算出第一个从节点同步到库并查询到数据时间：1529551414309-1529551407406=6903
+转化为秒：6903/1000=6.903秒
+
+-----------------------------------------
+
+这是第三个从节点查询到记录时间：
+10:51:49 [main] INFO  com.jt.app.TestApplication - 开始阻塞查询时间：1529549509242
+10:53:29 [main] INFO  com.jt.app.TestApplication - 查找到用户名为：用户-t2-0的记录，用户信息：User{id=700001, loginName='root-t2-0', loginPasswd='cb300cf0d7943bb87225d9a105ee9636', userName='用户-t2-0', sex=null, telephone='null', mobilePhone=null, email='广东-广州', address='广东-广州', userStatus=1, lastLoginTime=null, lastLoginIp='null', lastLoginAddr='root-t2-0', createTime=2018-06-21 10:52:28.0, createUser='lj0', updateTime=2018-06-21 10:52:28.0, updateUser='1245282613@qq.com', logoUrl='null'},
+当前时间：1529549609104
+
+这是主节点数据入库时间
+10:52:28 [main] INFO  com.jt.app.TestApplication - 添加t_user表数据！
+10:52:29 [main] INFO  com.jt.app.TestApplication - 拼接200000条记录花费时间：【1】秒
+10:53:26 [main] INFO  com.jt.app.TestApplication - 多值插入【200000】成功！
+10:53:26 [main] INFO  com.jt.app.TestApplication - 添加200000条记录花费时间：【56】秒,当前时间：1529549606064
+
+初步计算出第一个从节点同步到库并查询到数据时间：1529549609104-1529549606064=3040
+转化为秒：3040/1000=3.040秒
+
+*********并发为50万数据同步的测试*************
+
+这是第一个从节点查询到记录时间：
+11:07:52 [main] INFO  com.jt.app.TestApplication - 开始阻塞查询时间：1529550472273
+11:12:46 [main] INFO  com.jt.app.TestApplication - 查找到用户名为：用户-t2-0的记录，用户信息：User{id=1400001, loginName='root-t2-0', loginPasswd='cb300cf0d7943bb87225d9a105ee9636', userName='用户-t2-0', sex=null, telephone='null', mobilePhone=null, email='广东-广州', address='广东-广州', userStatus=1, lastLoginTime=null, lastLoginIp='null', lastLoginAddr='root-t2-0', createTime=2018-06-22 00:08:33.0, createUser='lj0', updateTime=2018-06-22 00:08:33.0, updateUser='1245282613@qq.com', logoUrl='null'},
+当前时间：1529550766739
+
+这是主节点数据入库时间
+11:08:33 [main] INFO  com.jt.app.TestApplication - 添加t_user表数据！
+11:08:36 [main] INFO  com.jt.app.TestApplication - 拼接500000条记录花费时间：【2】秒
+11:11:59 [main] INFO  com.jt.app.TestApplication - 多值插入【500000】成功！
+11:11:59 [main] INFO  com.jt.app.TestApplication - 添加500000条记录花费时间：【202】秒,当前时间：1529550719622
+
+初步计算出第一个从节点同步到库并查询到数据时间：1529550766739-1529550719622=12883
+转化为秒：12883/1000=12.883秒
+
+-------------------------------------------
+
+这是第二个从节点查询到记录时间：
+11:27:04 [main] INFO  com.jt.app.TestApplication - 开始阻塞查询时间：1529551624934
+11:32:01 [main] INFO  com.jt.app.TestApplication - 查找到用户名为：用户-t2-0的记录，用户信息：User{id=2300001, loginName='root-t2-0', loginPasswd='cb300cf0d7943bb87225d9a105ee9636', userName='用户-t2-0', sex=null, telephone='null', mobilePhone=null, email='广东-广州', address='广东-广州', userStatus=1, lastLoginTime=null, lastLoginIp='null', lastLoginAddr='root-t2-0', createTime=2018-06-22 00:27:56.0, createUser='lj0', updateTime=2018-06-22 00:27:56.0, updateUser='1245282613@qq.com', logoUrl='null'},
+当前时间：1529551921821
+
+这是主节点数据入库时间
+11:27:56 [main] INFO  com.jt.app.TestApplication - 添加t_user表数据！
+11:27:58 [main] INFO  com.jt.app.TestApplication - 拼接500000条记录花费时间：【2】秒
+11:31:09 [main] INFO  com.jt.app.TestApplication - 多值插入【500000】成功！
+11:31:09 [main] INFO  com.jt.app.TestApplication - 添加500000条记录花费时间：【190】秒,当前时间：1529551869238
+
+初步计算出第一个从节点同步到库并查询到数据时间：1529551921821-1529551869238=52583
+转化为秒：52583/1000=52.583秒
+
+第二次测试
+
+这是第二个从节点查询到记录时间：
+11:35:34 [main] INFO  com.jt.app.TestApplication - 开始阻塞查询时间：1529552134467
+11:40:18 [main] INFO  com.jt.app.TestApplication - 查找到用户名为：用户-t2-0的记录，用户信息：User{id=2800001, loginName='root-t2-0', loginPasswd='cb300cf0d7943bb87225d9a105ee9636', userName='用户-t2-0', sex=null, telephone='null', mobilePhone=null, email='广东-广州', address='广东-广州', userStatus=1, lastLoginTime=null, lastLoginIp='null', lastLoginAddr='root-t2-0', createTime=2018-06-22 00:36:09.0, createUser='lj0', updateTime=2018-06-22 00:36:09.0, updateUser='1245282613@qq.com', logoUrl='null'},
+当前时间：1529552418603
+
+这是主节点数据入库时间
+11:36:09 [main] INFO  com.jt.app.TestApplication - 添加t_user表数据！
+11:36:12 [main] INFO  com.jt.app.TestApplication - 拼接500000条记录花费时间：【2】秒
+11:39:28 [main] INFO  com.jt.app.TestApplication - 多值插入【500000】成功！
+11:39:28 [main] INFO  com.jt.app.TestApplication - 添加500000条记录花费时间：【195】秒,当前时间：1529552368408
+
+初步计算出第一个从节点同步到库并查询到数据时间：1529552418603-1529552368408=50195
+转化为秒：50195/1000=50.195秒
+
+-------------------------------------------
+
+这是第三个从节点查询到记录时间：
+10:58:33 [main] INFO  com.jt.app.TestApplication - 开始阻塞查询时间：1529549913835
+11:02:27 [main] INFO  com.jt.app.TestApplication - 查找到用户名为：用户-t2-0的记录，用户信息：User{id=900001, loginName='root-t2-0', loginPasswd='cb300cf0d7943bb87225d9a105ee9636', userName='用户-t2-0', sex=null, telephone='null', mobilePhone=null, email='广东-广州', address='广东-广州', userStatus=1, lastLoginTime=null, lastLoginIp='null', lastLoginAddr='root-t2-0', createTime=2018-06-21 10:59:07.0, createUser='lj0', updateTime=2018-06-21 10:59:07.0, updateUser='1245282613@qq.com', logoUrl='null'},
+当前时间：1529550147282
+
+这是主节点数据入库时间
+10:59:07 [main] INFO  com.jt.app.TestApplication - 添加t_user表数据！
+10:59:10 [main] INFO  com.jt.app.TestApplication - 拼接500000条记录花费时间：【2】秒
+11:02:15 [main] INFO  com.jt.app.TestApplication - 多值插入【500000】成功！
+11:02:15 [main] INFO  com.jt.app.TestApplication - 添加500000条记录花费时间：【185】秒,当前时间：1529550135428
+
+初步计算出第一个从节点同步到库并查询到数据时间：1529550147282-1529550135428=11854
+转化为秒：11854/1000=11.854秒
+
+*********并发为1条数据同步的测试*************
+
+第一次测试：
+
+这是第三个从节点查询到记录时间：
+14:21:07 [main] INFO  com.jt.app.TestApplication - 开始阻塞查询时间：1529562067181
+14:23:53 [main] INFO  com.jt.app.TestApplication - 查找到用户名为：用户-t2-0的记录，用户信息：User{id=3300001, loginName='root-t2-0', loginPasswd='cb300cf0d7943bb87225d9a105ee9636', userName='用户-t2-0', sex=null, telephone='null', mobilePhone=null, email='广东-广州', address='广东-广州', userStatus=1, lastLoginTime=null, lastLoginIp='null', lastLoginAddr='root-t2-0', createTime=2018-06-21 02:23:49.0, createUser='lj0', updateTime=2018-06-21 02:23:49.0, updateUser='1245282613@qq.com', logoUrl='null'},
+当前时间：1529562233025
+
+这是主节点数据入库时间
+14:23:48 [main] INFO  com.jt.app.TestApplication - 添加t_user表数据！
+14:23:49 [main] INFO  com.jt.app.TestApplication - 拼接1条记录花费时间：【0】秒
+14:23:49 [main] INFO  com.jt.app.TestApplication - 多值插入【1】成功！
+14:23:49 [main] INFO  com.jt.app.TestApplication - 添加1条记录花费时间：【0】秒,当前时间：1529562229608
+
+初步计算出第一个从节点同步到库并查询到数据时间：1529562233025-1529562229608=3417
+转化为秒：3417/1000=3.417秒
+
+第二次测试：
+
+这是第三个从节点查询到记录时间：
+14:27:44 [main] INFO  com.jt.app.TestApplication - 开始阻塞查询时间：1529562464313
+14:28:18 [main] INFO  com.jt.app.TestApplication - 查找到用户名为：用户-t2-0的记录，用户信息：User{id=3300002, loginName='root-t2-0', loginPasswd='cb300cf0d7943bb87225d9a105ee9636', userName='用户-t2-0', sex=null, telephone='null', mobilePhone=null, email='广东-广州', address='广东-广州', userStatus=1, lastLoginTime=null, lastLoginIp='null', lastLoginAddr='root-t2-0', createTime=2018-06-21 02:28:18.0, createUser='lj0', updateTime=2018-06-21 02:28:18.0, updateUser='1245282613@qq.com', logoUrl='null'},
+当前时间：1529562498964
+
+这是主节点数据入库时间
+14:28:18 [main] INFO  com.jt.app.TestApplication - 添加t_user表数据！
+14:28:18 [main] INFO  com.jt.app.TestApplication - 拼接1条记录花费时间：【0】秒
+14:28:18 [main] INFO  com.jt.app.TestApplication - 多值插入【1】成功！
+14:28:18 [main] INFO  com.jt.app.TestApplication - 添加1条记录花费时间：【0】秒,当前时间：1529562498884
+
+初步计算出第一个从节点同步到库并查询到数据时间：1529562498964-1529562498884=80
+转化为秒：80/1000=0.08秒

@@ -5,7 +5,6 @@ import com.jt.app.redis.GlobalCacheKey;
 import com.jt.app.redis.service.RedisService;
 import com.jt.app.repository.mongodb.OrderRepository;
 import com.jt.app.util.PageUtil;
-import org.apache.activemq.command.ActiveMQQueue;
 import org.apache.commons.collections.IteratorUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +17,6 @@ import org.springframework.jms.core.JmsMessagingTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import javax.print.attribute.standard.Destination;
 import javax.transaction.Transactional;
 import java.util.List;
 

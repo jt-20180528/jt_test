@@ -1,6 +1,7 @@
 package com.jt.app.util;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class TimeUtil {
@@ -58,8 +59,21 @@ public class TimeUtil {
         return sdf.format(new Date());
     }
 
+    public static String ymdHms2str(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat(ymdHms);
+        return sdf.format(date);
+    }
+
     public static String ymdHmsNoFormat2str() {
         SimpleDateFormat sdf = new SimpleDateFormat(ymdHmsNoFormat);
         return sdf.format(new Date());
+    }
+
+    public static boolean beforeDate(Date targetDate){
+        Calendar currentDt = Calendar.getInstance();
+        currentDt.setTime(new Date());
+        Calendar targetDt = Calendar.getInstance();
+        targetDt.setTime(targetDate);
+        return targetDt.before(currentDt);
     }
 }

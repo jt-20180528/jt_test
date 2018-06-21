@@ -8,8 +8,8 @@ spring:
     name: userService
 
   datasource:
-    url: jdbc:mysql://192.168.0.142:3306/jt_test?characterEncoding=UTF-8&useSSL=true
-    username: root
+    url: jdbc:mysql://192.168.0.143:3306/jt_test
+    username: t_user1
     password: 123456
     #url: jdbc:mysql://192.168.0.205:3306/jt_test?characterEncoding=UTF-8&useSSL=true
     #username: jt_test
@@ -18,7 +18,8 @@ spring:
     #username: root
     #password: Jt123$%^
     initialize: true
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: com.mysql.jdbc.Driver
+    #driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     show_sql: false
     format_sql: true
@@ -59,7 +60,7 @@ spring:
       min-idle: 0
 
   activemq:
-    broker-url: tcp://92.168.0.142:61616
+    broker-url: tcp://192.168.0.142:61616
     in-memory: true
     password: admin
     user: admin

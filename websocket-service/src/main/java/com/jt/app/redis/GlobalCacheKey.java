@@ -10,4 +10,9 @@ public class GlobalCacheKey {
     public static final String order_batch_key = "ORDER_BATCH";
     public static final String latest_order_key = "LATEST_ORDER";
 
+    //租户缓存对象
+    public static final String tenement_key = "TENEMENT";
+
+    //彩票用户缓存对象
+    public static final String lottery_user_key = "LOTTERY_USER";
 }

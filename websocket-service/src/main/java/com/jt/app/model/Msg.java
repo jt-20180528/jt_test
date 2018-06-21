@@ -6,6 +6,13 @@ public class Msg implements Serializable {
 
     private String name;
 
+    private Object content;
+
+    public Msg(String name, Object content) {
+        this.name = name;
+        this.content = content;
+    }
+
     public String getName() {
         return name;
     }
@@ -19,5 +26,13 @@ public class Msg implements Serializable {
     }
 
     public Msg() {
+    }
+
+    public Object getContent() {
+        return content;
+    }
+
+    public void setContent(Object content) {
+        this.content = content;
     }
 }

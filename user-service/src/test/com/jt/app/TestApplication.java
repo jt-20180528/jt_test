@@ -16,7 +16,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -372,7 +371,7 @@ public class TestApplication {
         //首先刪除已有t2測試
         final String nameFlag = "-t2-";
         long startTime, endTime = 0;
-        final Integer addNum = 1000000;
+        final Integer addNum = 1;
         final String tableName = "t_user";
         Integer usersNum = userServiceV1.getCountByNameLike(nameFlag);
         if (usersNum > 0) {
@@ -398,13 +397,13 @@ public class TestApplication {
         } else {
             logger.error("多值插入【" + addNum + "】失败！");
         }
-        logger.info("添加" + addNum + "条记录花费时间：【" + (endTime - startTime) / 1000 + "】秒");
+        logger.info("添加" + addNum + "条记录花费时间：【" + (endTime - startTime) / 1000 + "】秒,当前时间：" + System.currentTimeMillis());
     }
 
     @Test
     public void testMultiValueInsertTemp() {
         logger.info("添加t_user_temp表数据！");
-        final Integer addNum = 1000000;
+        final Integer addNum = 600000;
         long startTime, endTime = 0;
         final String nameFlag = "-t3-update-";
         final String tableName = "t_user_temp";
@@ -550,7 +549,7 @@ public class TestApplication {
      * 测试activemq发布消息
      */
     @Test
-    public void testActiveMqPublish(){
+    public void testActiveMqPublish() {
         final int addNum = 1000000;
         long startTime, endTime = 0;
         Iterable<Order> orders = this.buildOrderList(addNum);
