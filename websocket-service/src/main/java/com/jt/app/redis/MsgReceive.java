@@ -5,5 +5,5 @@ package com.jt.app.redis;
  */
 public interface MsgReceive {
 
-    void getMsg(String msg);
+    void getMsg(Object msg);
 }

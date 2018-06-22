@@ -16,7 +16,6 @@ import java.io.Serializable;
 public class LotteryUserTemp implements Serializable {
 
     @Id
-    @GeneratedValue
     private Integer id;
     @Column(length = 20, nullable = false)
     private String name;

@@ -20,7 +20,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.CountDownLatch;
 
@@ -50,13 +49,16 @@ public class TestApplication {
      */
     @Test
     public void testOrder() {
-        final int tenementNum = 1;
+        final int tenementNum = 10;
         long startTime, endTime = 0L;
+        long startTimeAll = 0L, endTimeAll = 0L;
+
+        startTimeAll = System.currentTimeMillis();
         //先检查有无足额租户，没有刪除重建
         startTime = System.currentTimeMillis();
         long tenementCount = tenementServiceV1.getTenementRepository().count();
         endTime = System.currentTimeMillis();
-        logger.info("查询租户数量耗时：{}", (endTime - startTime) / 1000 + "秒");
+        logger.info("查询租户数量耗时：{}", (endTime - startTime) + "毫秒");
         if (tenementCount > 0) {
             tenementServiceV1.getTenementRepository().deleteAll();
             logger.info("检查租户个数为{}个，需要刪除{}个租户！", tenementCount, tenementCount);
@@ -67,12 +69,12 @@ public class TestApplication {
         startTime = System.currentTimeMillis();
         boolean flag = tenementServiceV1.jointAddTenement(jointSql);
         endTime = System.currentTimeMillis();
-        logger.info("拼接插入租户耗时：{}", (endTime - startTime) / 1000 + "秒");
+        logger.info("拼接插入租户耗时：{}", (endTime - startTime) + "毫秒");
         if (flag) {
             logger.info("{}个租户创建完成！", tenementNum);
         }
         //为每个租户创建1万个用户
-        final int user1w = 100;
+        final int user1w = 10000;
         List<Tenement> tenementList = tenementServiceV1.getTenementRepository().findAll();
         if (tenementList == null || tenementList.size() != tenementNum) {
             Asserts.check(false, "创建" + tenementNum + "个租户出错！");
@@ -86,27 +88,32 @@ public class TestApplication {
             startTime = System.currentTimeMillis();
             boolean flag1 = lotteryUserServiceV1.jointAddLotteryUser(bluidLotteryUser);
             endTime = System.currentTimeMillis();
-            logger.info("拼接插入彩票用户耗时：{}", (endTime - startTime) / 1000 + "秒");
+            logger.info("拼接插入彩票用户耗时：{}", (endTime - startTime) + "毫秒");
             logger.info("租户{}添加完成！", tenement.getName());
         }
 
         //重新从库中查询出租户对应的彩票用户放入缓存
+        startTime = System.currentTimeMillis();
         for (Tenement tenement : tenementList) {
             List<LotteryUser> lotteryUsers = lotteryUserServiceV1.getLotteryUsersByTenementId(tenement.getId());
             redisService.hset(GlobalCacheKey.tenement_key, GlobalCacheKey.tenement_key + tenement.getId(), lotteryUsers);
             logger.info("租户{}放入缓存完成！", tenement.getName());
         }
+        endTime = System.currentTimeMillis();
+        logger.info("{}个租户放入缓存共耗时：{}", tenementNum, (endTime - startTime) + "毫秒");
 
         //查询所有租户开奖,并添加到任务调度线程中
         final Integer lotteryStatus = 1;   //待开奖
         List<Tenement> tenements = tenementServiceV1.getNoSendAwardTenement(lotteryStatus);
         if (tenements != null && tenements.size() > 0) {
+            logger.info("查询到一共有{}个待开奖租户,准备把这些租户放入定时任务处理线程中，同时分别处理!", tenements.size());
             Timer timer = new Timer();
             countDownLatch = new CountDownLatch(tenements.size());
             for (Tenement tenement : tenements) {
                 if (!TimeUtil.beforeDate(tenement.getOpenLotteryTime())) {
+                    //logger.info("数据库中的开奖时间：{}", tenement.getOpenLotteryTime());
                     Calendar calendar = Calendar.getInstance();
-                    calendar.add(Calendar.MINUTE, 1);
+                    calendar.add(Calendar.SECOND, 20);
                     timer.schedule(new SendAwardTask(tenement, countDownLatch), calendar.getTime());
                     logger.info("租户{}已经添加到等待派奖队列中，派奖时间为：{}", tenement.getName(), calendar.getTime());
                 } else {
@@ -116,10 +123,13 @@ public class TestApplication {
         }
         try {
             countDownLatch.await();
-            logger.error("timer线程执行完成！");
+            endTimeAll = System.currentTimeMillis();
         } catch (Exception e) {
             e.printStackTrace();
             logger.error("等待线程中出错！");
+        } finally {
+            logger.error("timer线程执行完成，任务结束！");
+            //logger.info("{}个租户每个租户{}个用户从下单到更改主单记录完成共耗时：{}包含40s开奖时间！", tenementNum,user1w,(endTimeAll - startTime)/1000 + "秒");
         }
     }
 
@@ -149,7 +159,7 @@ public class TestApplication {
         if (lotteryUserNum > 0) {
             sb.append("insert into t_lotteryUser(name,lotteryType,lotteryStatus,lotteryNumber,tenementId,winLotteryStatus) values");
             for (int i = 0; i < lotteryUserNum; i++) {
-                if (i > 0) {
+                if (i < lotteryUserNum - 1) {
                     sb.append("('" + String.valueOf("user-" + this.random10(8)) + "',1,1," + this.random10(10) + "," + tenementNum + ",1),");
                 }
                 if (i == lotteryUserNum - 1) {
@@ -177,6 +187,29 @@ public class TestApplication {
             if (user != null) {
                 existUser = false;
                 logger.info("查找到用户名为：" + userName + "的记录，用户信息：" + user.toString() + ",\n当前时间：" + System.currentTimeMillis());
+            }
+        }
+    }
+
+    /**
+     * 测试mysql主从库，从从库读取数据
+     */
+    @Test
+    public void testReadSlaveMysql() {
+        List<Tenement> tenements = tenementServiceV1.getTenementRepository().findAll();
+        if (tenements == null || tenements.size() == 0) {
+            logger.info("数据库中没有数据，先添加数据！");
+            final Integer tenementNum = 50000;
+            String jointTenementSql = bluidTenementSql(tenementNum);
+            boolean flag = tenementServiceV1.jointAddTenement(jointTenementSql);
+            if (flag) {
+                logger.info("新增{}条数据到租户表中成功！", tenementNum);
+            }else{
+                logger.error("新增{}条数据到租户表中失败！", tenementNum);
+            }
+        }else{
+            while (true){
+                tenementServiceV1.getTenementRepository().findAll();
             }
         }
     }

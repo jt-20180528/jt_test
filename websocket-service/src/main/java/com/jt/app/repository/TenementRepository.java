@@ -27,4 +27,7 @@ public interface TenementRepository extends JpaRepository<Tenement, Integer> {
     Tenement getById(Integer id);
 
     List<Tenement> getByLotteryStatus(Integer lotteryStatus);
+
+    @Query(value="select * from t_tenement",nativeQuery = true)
+    List<Tenement> getTenementBySql();
 }

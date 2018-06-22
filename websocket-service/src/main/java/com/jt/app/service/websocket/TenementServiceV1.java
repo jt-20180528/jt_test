@@ -48,6 +48,10 @@ public class TenementServiceV1 {
         return tenementRepository.getByLotteryStatus(lotteryStatus);
     }
 
+    public List<Tenement> getTenementBySql(){
+        return tenementRepository.getTenementBySql();
+    }
+
     /**
      * 拼接sql添加租户
      *

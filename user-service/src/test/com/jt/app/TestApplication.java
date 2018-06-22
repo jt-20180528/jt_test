@@ -373,6 +373,7 @@ public class TestApplication {
         long startTime, endTime = 0;
         final Integer addNum = 1;
         final String tableName = "t_user";
+
         Integer usersNum = userServiceV1.getCountByNameLike(nameFlag);
         if (usersNum > 0) {
             startTime = System.currentTimeMillis();
