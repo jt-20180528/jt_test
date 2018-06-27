@@ -26,7 +26,7 @@ public class SendMsgTask {
     public void test3mTask() {
         //logger.info("test3mTask---{}", TimeUtile.ymdHms2str());
         Msg msg = new Msg();
-        Map<String, Object> contentMap = new HashMap<>();
+        Map<String, Object> contentMap = new HashMap<String, Object>();
         contentMap.put("msg", "定时任务每5秒执行一次");
         contentMap.put("sendTime", TimeUtil.ymdHms2str());
         msg.setContent(contentMap);

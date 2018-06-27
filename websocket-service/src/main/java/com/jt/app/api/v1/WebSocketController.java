@@ -43,7 +43,7 @@ public class WebSocketController {
         //messagingTemplate.convertAndSend("/topic/subscribeTest", message.getName());
         //组装content
         Msg msg = new Msg();
-        Map<String,Object> content = new HashMap<>();
+        Map<String,Object> content = new HashMap<String,Object>();
         content.put("msg","点击广播测试");
         try {
             content.put("sendTime", TimeUtil.ymdHms2str());

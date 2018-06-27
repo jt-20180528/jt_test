@@ -11,9 +11,9 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class GlobleBasicCache {
 
-    public static ConcurrentHashMap<String, WebSocketSession> userSessionMap = new ConcurrentHashMap<>();
+    public static ConcurrentHashMap<String, WebSocketSession> userSessionMap = new ConcurrentHashMap<String, WebSocketSession>();
 
-    private static ConcurrentHashMap<String, Long> amqMsgMap = new ConcurrentHashMap<>();
+    private static ConcurrentHashMap<String, Long> amqMsgMap = new ConcurrentHashMap<String, Long>();
 
     public static void setUserSessionMap(String sessionId, WebSocketSession session) {
         if (!userSessionMap.containsKey(sessionId)) {
@@ -41,7 +41,7 @@ public class GlobleBasicCache {
 
     public static List<WebSocketSession> getAllWebSocketSession() {
         Collection<WebSocketSession> sessions = userSessionMap.values();
-        List<WebSocketSession> sessionList = new ArrayList<>(sessions.size());
+        List<WebSocketSession> sessionList = new ArrayList<WebSocketSession>(sessions.size());
         ;
         if (sessions.size() > 0) {
             for (WebSocketSession webSocketSession : sessions) {

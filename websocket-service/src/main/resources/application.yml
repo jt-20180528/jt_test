@@ -1,6 +1,8 @@
 server:
   port: 8089
 
+debug: true
+
 spring:
   profiles:
     active: test
@@ -15,9 +17,9 @@ spring:
     cache: false
   datasource:
       #url: jdbc:mysql://192.168.0.149:3306/jt_test?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=Hongkong  ##连接wendos mysql8.0使用
-      url: jdbc:mysql://192.168.0.143:3306/jt_test
-      username: t_user1
-      password: 123456
+      url: jdbc:mysql://192.168.0.143:8066/jt_test?useSSL=false
+      username: user
+      password: user
       #url: jdbc:mysql://192.168.0.205:3306/jt_test?characterEncoding=UTF-8&useSSL=true
       #username: jt_test
       #password: jt123456
@@ -25,7 +27,7 @@ spring:
       #username: root
       #password: Jt123$%^
       initialize: true
-      driver-class-name: com.mysql.jdbc.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     show_sql: false
     format_sql: true
@@ -34,7 +36,8 @@ spring:
     open-in-view: true
     hibernate:
       #hbm2ddl-auto: create-drop
-      hbm2ddl-auto: update
+      #hbm2ddl-auto: update
+      hbm2ddl-auto: validate
       dialect: org.hibernate.dialect.MySQL5Dialect
       naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 

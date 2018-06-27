@@ -1,4 +1,4 @@
-package com.jt.app.service.websocket;
+package com.jt.app.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

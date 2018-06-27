@@ -3,11 +3,13 @@ package com.jt.app;
 import com.jt.app.model.LotteryUser;
 import com.jt.app.model.Tenement;
 import com.jt.app.model.User;
+import com.jt.app.model.op.model.BetOrderTemp;
 import com.jt.app.redis.GlobalCacheKey;
 import com.jt.app.redis.service.RedisService;
-import com.jt.app.service.websocket.LotteryUserServiceV1;
-import com.jt.app.service.websocket.TenementServiceV1;
-import com.jt.app.service.websocket.UserServiceV1;
+import com.jt.app.service.BetOrderServiceV1;
+import com.jt.app.service.LotteryUserServiceV1;
+import com.jt.app.service.TenementServiceV1;
+import com.jt.app.service.UserServiceV1;
 import com.jt.app.task.SendAwardTask;
 import com.jt.app.util.TimeUtil;
 import org.apache.http.util.Asserts;
@@ -41,6 +43,8 @@ public class TestApplication {
     private UserServiceV1 userServiceV1;
     @Autowired
     private RedisService redisService;
+    @Autowired
+    private BetOrderServiceV1 betOrderServiceV1;
 
     private CountDownLatch countDownLatch = null;
 
@@ -170,6 +174,70 @@ public class TestApplication {
         return sb.toString();
     }
 
+    public String bluidBetOrder(Integer recodeNum, String tableName, String prefix, double rate, Integer lotteryNumberId) {
+        StringBuilder sb = new StringBuilder();
+        if (tableName.equals("t_bet_order")) {
+            sb.append("insert into " + tableName + "(ORDERNO,BATCH_ORDERNO,TENANT_CODE,USER_ID,USER_NAME,GAME_ID,BET_SINGLE_AMOUNT,BET_COUNT,BET_TOTAL_AMOUNT,BET_DIGITS,BET_ID,BET_MULTIPLE,BET_NUMBER,BET_SECRET,BET_TIME,BET_WAY,CHASE_NUMBER_ID,CHASE_ORDER_ID,DEVICE,LOTTERY_NUMBER,LOTTERY_NUMBER_ID,ODDS,ORDER_STATUS,WIN_COUNT,WIN_AMOUNT,WIN_STATUS,AWARD_STATUS,AWARD_TIME,REBATE_CHOOSE,REBATE_USER,REBATE_AMOUNT,AGENT_REBATE_AMOUNT,BET_REBATE_STATUS,AGENT_REBATE_STATUS,LAST_MODIFIED_BY,LAST_MODIFIED_DATE,ADAPT,PLATFORM_TYPE,WIN_SECRET,ROOM_ID) values");
+        }
+        if (tableName.equals("t_bet_order_temp")) {
+            sb.append("insert into " + tableName + "(LOTTERY_NUMBER,LOTTERY_NUMBER_ID,ODDS,WIN_COUNT,WIN_AMOUNT,WIN_STATUS,WIN_SECRET) values");
+        }
+        for (int i = 0; i < recodeNum; i++) {
+            if (tableName.equals("t_bet_order")) {
+                sb.append("('" + String.valueOf(prefix + "order-" + this.random10(8)) + "',");
+                sb.append("'" + String.valueOf(prefix + "batchOrderno-" + this.random10(8)) + "',");
+                sb.append("'" + String.valueOf(prefix + "tenantCode-" + this.random10(8)) + "',");
+                sb.append("" + (recodeNum + 2) * rate + ",");
+                sb.append("'" + String.valueOf(prefix + "userName-" + this.random10(8)) + "',");
+                sb.append("" + (recodeNum * 1.2) * rate + ",");
+                sb.append("" + (recodeNum * 1.2) * rate + ",");
+                sb.append("" + (recodeNum * 3.3) * rate + ",");
+                sb.append("" + (recodeNum * 11.5) * rate + ",");
+                sb.append("'" + String.valueOf(prefix + "betDigits-" + this.random10(8)) + "',");
+                sb.append("" + (recodeNum * 3) * rate + ",");
+                sb.append("" + (recodeNum * 4.1) * rate + ",");
+                sb.append("'" + String.valueOf(prefix + "betNumber-" + this.random10(8)) + "',");
+                sb.append("'" + String.valueOf(prefix + "betSecret-" + this.random10(8)) + "',");
+                sb.append("'" + TimeUtil.ymdHms2str() + "',");
+                sb.append("" + (recodeNum % 2 == 0 ? 0 : 1) * rate + ",");
+                sb.append("" + (recodeNum + 100001) * rate + ",");
+                sb.append("" + (recodeNum + 1001) * rate + ",");
+                sb.append("" + (recodeNum % 2 == 0 ? 1 : 2) * rate + ",");
+                sb.append("'" + (recodeNum + 1002) * rate + "',");
+                sb.append("" + lotteryNumberId + ",");
+                sb.append("" + (recodeNum * 1.8) * rate + ",");
+                sb.append("" + (recodeNum % 2 == 0 ? 1 : 2) * rate + ",");
+                sb.append("" + (recodeNum * 2.1) * rate + ",");
+                sb.append("" + (recodeNum * 1.1) * rate + ",");
+                sb.append("" + (recodeNum % 2 == 0 ? 1 : 2) * rate + ",");
+                sb.append("" + (recodeNum % 2 == 0 ? 0 : 1) * rate + ",");
+                sb.append("'" + TimeUtil.ymdHms2str() + "',");
+                sb.append("" + (recodeNum * 1.1) * rate + ",");
+                sb.append("" + (recodeNum * 1.1) * rate + ",");
+                sb.append("" + (recodeNum * 1.1) * rate + ",");
+                sb.append("" + (recodeNum * 1.1) * rate + ",");
+                sb.append("" + (recodeNum % 2 == 0 ? 0 : 1) * rate + ",");
+                sb.append("" + (recodeNum % 2 == 0 ? 0 : 1) * rate + ",");
+                sb.append("'" + String.valueOf(prefix + "lastModifiedBy-" + this.random10(8)) + "',");
+                sb.append("'" + TimeUtil.ymdHms2str() + "',");
+                sb.append("" + (recodeNum % 2 == 0 ? 0 : 1) * rate + ",");
+                sb.append("" + (recodeNum % 2 == 0 ? 0 : 1) * rate + ",");
+                sb.append("'" + String.valueOf(prefix + "winSecret-" + this.random10(8)) + "',");
+                sb.append("" + (recodeNum * 2) * rate + "),");
+            }
+            if (tableName.equals("t_bet_order_temp")) {
+                sb.append("('" + (recodeNum + 1001) * rate + "',");
+                sb.append("" + lotteryNumberId + ",");
+                sb.append("" + (recodeNum * 1.8) * rate + ",");
+                sb.append("" + (recodeNum + 102) * rate + ",");
+                sb.append("" + (recodeNum * 1) * rate + ",");
+                sb.append("" + (recodeNum + 103) * rate + ",");
+                sb.append("'" + String.valueOf(prefix + "winSecret-" + this.random10(8)) + "'),");
+            }
+        }
+        return sb.deleteCharAt(sb.length() - 1).toString();
+    }
+
     public Integer random10(Integer baseNumber) {
         return new Random().nextInt(baseNumber) + 1;
     }
@@ -204,13 +272,99 @@ public class TestApplication {
             boolean flag = tenementServiceV1.jointAddTenement(jointTenementSql);
             if (flag) {
                 logger.info("新增{}条数据到租户表中成功！", tenementNum);
-            }else{
+            } else {
                 logger.error("新增{}条数据到租户表中失败！", tenementNum);
             }
-        }else{
-            while (true){
+        } else {
+            while (true) {
                 tenementServiceV1.getTenementRepository().findAll();
             }
         }
     }
+
+    @Test
+    public void testInsertBetOrder() {
+        final int recodeNum = 10000;
+        final String tableName = "t_bet_order_temp";
+        String prefix = "";
+        double rate = 1.0;
+        Integer lotteryNumberId = 10000;
+        boolean isMultiTenant = true; //是否清除原有记录
+        boolean isCreateTempTable = true;
+        if (tableName.equals("t_bet_order_temp")) {
+            prefix = "temp-";
+            rate = 1.2; //修改添加不同数据
+            lotteryNumberId = 10002; //修改中奖号码
+        }
+        int insertNum = 20;
+        long startTime, endTime;
+        long startTimeAll, endTimeAll;
+        long betOrderCount = 0;
+        //检查表中是否有数据，有则清除
+        if (tableName.equals("t_bet_order_temp")) {
+            betOrderCount = betOrderServiceV1.getRecodeCountBetOrderTemp();
+        }
+        if (tableName.equals("t_bet_order")) {
+            betOrderCount = betOrderServiceV1.getRecodeCountBetOrder();
+        }
+
+        //bet_order表需要大量数据，不轻易删除
+        if (tableName.equals("t_bet_order_temp")) {
+            if (!isMultiTenant) {
+                if (betOrderCount > 0) {
+                    logger.info("表{}中存在记录{}条，需要刪除！", tableName, betOrderCount);
+                    startTime = System.currentTimeMillis();
+                    boolean f1 = betOrderServiceV1.deleteAllBySql(tableName);
+                    endTime = System.currentTimeMillis();
+                    logger.info("刪除表{},{}条记录,耗时：{}毫秒", tableName, betOrderCount, (endTime - startTime));
+                }
+            }
+        }
+
+        startTimeAll = System.currentTimeMillis();
+        for (int i = 0; i < insertNum; i++) {
+            startTime = System.currentTimeMillis();
+            String jointBetOrderSql = bluidBetOrder(recodeNum, tableName, prefix, rate, lotteryNumberId);
+            endTime = System.currentTimeMillis();
+            //logger.info("第{}次拼接sql:{}", i + 1, jointBetOrderSql);
+            logger.info("第{}次拼接{}条记录耗时：{}毫秒！", i + 1, recodeNum, (endTime - startTime));
+            startTime = System.currentTimeMillis();
+            boolean flag = betOrderServiceV1.jointAddBetOrder(jointBetOrderSql);
+            endTime = System.currentTimeMillis();
+            logger.info("第{}次入库{}条记录耗时：{}毫秒！", i + 1, recodeNum, (endTime - startTime));
+        }
+        endTimeAll = System.currentTimeMillis();
+        logger.info("新增完成{}条记录耗时：{}毫秒！", recodeNum * insertNum, (endTimeAll - startTimeAll));
+    }
+
+    @Test
+    public void testSyncBetOrderStatusByExist() {
+        long startTime, endTime;
+        startTime = System.currentTimeMillis();
+        boolean flag = betOrderServiceV1.updateBetOrderStatusByExist();
+        endTime = System.currentTimeMillis();
+        logger.info("同步主单状态{}，耗时{}毫秒！", flag ? "成功" : "失败", (startTime - endTime));
+    }
+
+    @Test
+    public void testSyncBetOrderStatusByJoin() {
+        long startTime, endTime;
+        Integer lotteryNumberId = 10001;
+        startTime = System.currentTimeMillis();
+        boolean flag = betOrderServiceV1.updateBetOrderStatusByJpaSql(lotteryNumberId);
+        //boolean flag = betOrderServiceV1.updateBetOrderStatusByJoinSql(lotteryNumberId);
+        endTime = System.currentTimeMillis();
+        logger.info("同步主单状态{}，耗时{}毫秒！", flag ? "成功" : "失败", (endTime - startTime));
+    }
+
+    /**
+     * 测试从从库获取数据
+     */
+    @Test
+    public void testGetDataBySlave() {
+        final Integer lotteryNumberId = 10001;
+        List<Object> betOrderTemps = betOrderServiceV1.getBetOrderTempsByLNId(lotteryNumberId);
+        logger.info("获取临时表成功！数据记录数为：{}", betOrderTemps.size());
+    }
+
 }

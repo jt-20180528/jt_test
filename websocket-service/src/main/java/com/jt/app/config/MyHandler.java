@@ -20,7 +20,7 @@ public class MyHandler extends TextWebSocketHandler {
     private static final String CLIENT_ID = "userId";
 
     static {
-        users = new HashMap<>();
+        users = new HashMap<Integer, WebSocketSession>();
     }
 
     @Override

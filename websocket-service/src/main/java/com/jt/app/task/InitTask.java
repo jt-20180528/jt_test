@@ -1,18 +1,14 @@
 package com.jt.app.task;
 
-import com.jt.app.model.Tenement;
-import com.jt.app.service.websocket.TenementServiceV1;
 import com.jt.app.util.GlobleBasicCache;
 import com.jt.app.util.TimeUtil;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
 import java.util.List;
 
 @Component

@@ -11,7 +11,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 
 public class H5WebSocketHandler extends AbstractWebSocketHandler {
 
-    private CopyOnWriteArraySet<String> sessionSet = new CopyOnWriteArraySet<>();
+    private CopyOnWriteArraySet<String> sessionSet = new CopyOnWriteArraySet<String>();
 
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
         session.sendMessage(new TextMessage(message.getPayload()));

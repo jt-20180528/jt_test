@@ -1,4 +1,4 @@
-package com.jt.app.service.websocket;
+package com.jt.app.service;
 
 import com.jt.app.model.Tenement;
 import com.jt.app.repository.TenementRepository;

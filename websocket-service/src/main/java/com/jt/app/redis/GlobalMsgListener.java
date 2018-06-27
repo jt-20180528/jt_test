@@ -1,9 +1,8 @@
 package com.jt.app.redis;
 
-import com.jt.app.model.LotteryUser;
-import com.jt.app.service.websocket.LotteryUserServiceV1;
-import com.jt.app.service.websocket.TenementServiceV1;
-import com.jt.app.service.websocket.UserServiceV1;
+import com.jt.app.service.LotteryUserServiceV1;
+import com.jt.app.service.TenementServiceV1;
+import com.jt.app.service.UserServiceV1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
