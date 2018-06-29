@@ -289,7 +289,7 @@ public class TestApplication {
         String prefix = "";
         double rate = 1.0;
         Integer lotteryNumberId = 10000;
-        boolean isMultiTenant = true; //是否清除原有记录
+        boolean isMultiTenant = false; //是否清除原有记录
         boolean isCreateTempTable = true;
         if (tableName.equals("t_bet_order_temp")) {
             prefix = "temp-";

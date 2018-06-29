@@ -3,22 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2bf0b507-ef9c-414d-b585-ff14eb7a89bc" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/websocket-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/websocket-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/api/v1/WebSocketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/api/v1/WebSocketController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/config/H5WebSocketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/config/H5WebSocketHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/config/MyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/config/MyHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/redis/GlobalMsgListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/redis/GlobalMsgListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/service/websocket/H5WebSocketServiceV1.java" beforeDir="false" afterPath="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/service/H5WebSocketServiceV1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/service/websocket/LotteryUserServiceV1.java" beforeDir="false" afterPath="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/service/LotteryUserServiceV1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/service/websocket/LotteryUserTempServiceV1.java" beforeDir="false" afterPath="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/service/LotteryUserTempServiceV1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/service/websocket/TenementServiceV1.java" beforeDir="false" afterPath="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/service/TenementServiceV1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/service/websocket/UserServiceV1.java" beforeDir="false" afterPath="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/service/UserServiceV1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/service/websocket/WebSocketV1.java" beforeDir="false" afterPath="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/service/WebSocketV1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/task/InitTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/task/InitTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/task/SendAwardTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/task/SendAwardTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/task/SendMsgTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/task/SendMsgTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/util/GlobleBasicCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/util/GlobleBasicCache.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/websocket-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/websocket-service/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/websocket-service/src/test/com/jt/app/TestApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/websocket-service/src/test/com/jt/app/TestApplication.java" afterDir="false" />
     </list>
@@ -41,20 +26,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="application.yml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/websocket-service/src/main/resources/application.yml">
+      <file leaf-file-name="TestApplication.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/websocket-service/src/test/com/jt/app/TestApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="20" column="20" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
+            <state relative-caret-position="200">
+              <caret line="312" column="33" selection-start-line="312" selection-start-column="33" selection-end-line="312" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LotteryUser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/model/LotteryUser.java">
+      <file leaf-file-name="WebSocketApplication.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/WebSocketApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+            <state relative-caret-position="150">
+              <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/websocket-service/src/main/resources/user.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/websocket-service/src/main/resources/application.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="500">
+              <caret line="20" column="20" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -62,17 +68,8 @@
       <file leaf-file-name="BetOrderServiceV1.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/service/BetOrderServiceV1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/websocket-service/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="29" column="21" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
+            <state relative-caret-position="2625">
+              <caret line="120" column="65" selection-start-line="120" selection-start-column="65" selection-end-line="120" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -181,8 +178,8 @@
         <option value="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/config/H5WebSocketHandler.java" />
         <option value="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/service/BetOrderServiceV1.java" />
         <option value="$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/repository/BetOrderRepository.java" />
-        <option value="$PROJECT_DIR$/websocket-service/src/test/com/jt/app/TestApplication.java" />
         <option value="$PROJECT_DIR$/websocket-service/pom.xml" />
+        <option value="$PROJECT_DIR$/websocket-service/src/test/com/jt/app/TestApplication.java" />
         <option value="$PROJECT_DIR$/websocket-service/src/main/resources/application.yml" />
       </list>
     </option>
@@ -226,7 +223,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1400" />
@@ -238,7 +235,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -287,23 +286,12 @@
               <item name="websocket-service" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jt_test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jt_test" type="462c0819:PsiDirectoryNode" />
-              <item name="websocket-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -316,7 +304,7 @@
     <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../jt/op" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -355,7 +343,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TestApplication.testInsertBetOrder">
+  <component name="RunManager" selected="Spring Boot.WebSocketApplication">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
@@ -509,12 +497,12 @@
     </configuration>
     <list>
       <item itemvalue="Spring Boot.CommonApplication" />
+      <item itemvalue="Spring Boot.DiscoveryApplication" />
       <item itemvalue="JUnit.TestApplication.testInsertBetOrder" />
       <item itemvalue="Spring Boot.WebSocketApplication" />
       <item itemvalue="JUnit.TestApplication.testSyncBetOrderStatusByJoin" />
       <item itemvalue="JUnit.TestApplication.testSyncBetOrderStatusByExist" />
       <item itemvalue="JUnit.TestApplication.testGetDataBySlave" />
-      <item itemvalue="Spring Boot.DiscoveryApplication" />
     </list>
     <recent_temporary>
       <list>
@@ -571,51 +559,54 @@
       <workItem from="1529978599563" duration="4216000" />
       <workItem from="1529985061435" duration="1623000" />
       <workItem from="1530004524006" duration="1287000" />
-      <workItem from="1530061722514" duration="16342000" />
+      <workItem from="1530061722514" duration="17188000" />
+      <workItem from="1530149900693" duration="18285000" />
+      <workItem from="1530181942046" duration="11000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestApplication_testInsertBetOrder - 2018.06.26 at 10h 00m 05s.xml">
-      <configuration name="TestApplication.testInsertBetOrder" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestApplication_testSyncBetOrderStatusByJoin - 2018.06.26 at 10h 08m 45s.xml">
-      <configuration name="TestApplication.testSyncBetOrderStatusByJoin" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestApplication_testSyncBetOrderStatusByJoin - 2018.06.26 at 10h 10m 21s.xml">
-      <configuration name="TestApplication.testSyncBetOrderStatusByJoin" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestApplication_testInsertBetOrder - 2018.06.26 at 10h 11m 58s.xml">
-      <configuration name="TestApplication.testInsertBetOrder" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestApplication_testInsertBetOrder - 2018.06.26 at 10h 13m 20s.xml">
-      <configuration name="TestApplication.testInsertBetOrder" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestApplication_testSyncBetOrderStatusByJoin - 2018.06.26 at 10h 14m 22s.xml">
-      <configuration name="TestApplication.testSyncBetOrderStatusByJoin" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestApplication_testSyncBetOrderStatusByJoin - 2018.06.26 at 10h 15m 57s.xml">
-      <configuration name="TestApplication.testSyncBetOrderStatusByJoin" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestApplication_testGetDataBySlave - 2018.06.27 at 10h 49m 30s.xml">
-      <configuration name="TestApplication.testGetDataBySlave" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="TestApplication_testGetDataBySlave - 2018.06.27 at 11h 03m 58s.xml">
       <configuration name="TestApplication.testGetDataBySlave" configurationId="JUnit" />
     </history-entry>
     <history-entry file="TestApplication_testInsertBetOrder - 2018.06.27 at 11h 43m 03s.xml">
       <configuration name="TestApplication.testInsertBetOrder" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="TestApplication_testInsertBetOrder - 2018.06.28 at 11h 13m 20s.xml">
+      <configuration name="TestApplication.testInsertBetOrder" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestApplication_testInsertBetOrder - 2018.06.28 at 11h 45m 06s.xml">
+      <configuration name="TestApplication.testInsertBetOrder" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestApplication_testInsertBetOrder - 2018.06.28 at 14h 22m 45s.xml">
+      <configuration name="TestApplication.testInsertBetOrder" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestApplication_testInsertBetOrder - 2018.06.28 at 17h 03m 10s.xml">
+      <configuration name="TestApplication.testInsertBetOrder" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestApplication_testInsertBetOrder - 2018.06.28 at 17h 06m 56s.xml">
+      <configuration name="TestApplication.testInsertBetOrder" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestApplication_testInsertBetOrder - 2018.06.28 at 17h 09m 47s.xml">
+      <configuration name="TestApplication.testInsertBetOrder" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestApplication_testGetDataBySlave - 2018.06.28 at 17h 11m 14s.xml">
+      <configuration name="TestApplication.testGetDataBySlave" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestApplication_testInsertBetOrder - 2018.06.28 at 17h 39m 57s.xml">
+      <configuration name="TestApplication.testInsertBetOrder" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="361199000" />
+    <option name="totallyTimeSpent" value="380341000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" order="3" visible="true" weight="0.09914712" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.07782516" side_tool="true" visible="true" weight="0.3129689" />
+      <window_info anchor="right" id="Maven Projects" order="3" visible="true" weight="0.07036247" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
@@ -625,26 +616,26 @@
       <window_info id="UI Designer" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4051447" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.31511253" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Java Enterprise" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.42336547" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.9221748" weight="0.3129689" />
       <window_info anchor="bottom" id="Spring" order="7" weight="0.40085745" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.76236045" visible="true" weight="0.23880596" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.76236045" visible="true" weight="0.1748401" />
       <window_info anchor="right" id="Bean Validation" order="3" />
       <window_info id="Web" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.5627615" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" sideWeight="0.23763955" side_tool="true" weight="0.23880596" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.31511253" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.5627615" />
     </layout>
     <layout-to-restore>
       <window_info id="Designer" order="2" />
@@ -652,7 +643,7 @@
       <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3279743" />
       <window_info anchor="bottom" id="Spring" order="7" weight="0.40085745" />
       <window_info id="Image Layers" order="3" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.5627615" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
@@ -660,6 +651,7 @@
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.31511253" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -668,7 +660,6 @@
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="13" />
       <window_info anchor="right" id="Maven Projects" order="5" weight="0.09914712" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.5627615" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.76236045" visible="true" weight="0.23880596" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -714,13 +705,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/redis/RedisMsgConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="7" column="60" selection-start-line="7" selection-start-column="60" selection-end-line="7" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/redis/GlobalMsgListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
@@ -896,11 +880,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
           <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
-          <folding>
-            <element signature="e#411#437#0" expanded="true" />
-            <element signature="e#526#540#0" expanded="true" />
-            <element signature="e#1474#1492#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -922,9 +901,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="335">
           <caret line="30" column="58" selection-start-line="30" selection-start-column="58" selection-end-line="30" selection-end-column="58" />
-          <folding>
-            <element signature="e#925#941#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -932,16 +908,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="25">
           <caret line="1" selection-start-line="1" selection-end-line="1" />
-          <folding>
-            <element signature="e#527#535#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/WebSocketApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="40" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -949,9 +915,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
           <caret line="46" column="63" selection-start-line="46" selection-start-column="63" selection-end-line="46" selection-end-column="63" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -959,13 +922,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="28" selection-start-line="28" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/websocket-service/src/test/com/jt/app/TestApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="289" column="26" selection-start-line="289" selection-start-column="26" selection-end-line="289" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -4635,9 +4591,10 @@
               <point x="0.0" y="15.5" />
             </edge>
           </edges>
-          <settings layout="Hierarchic Group" zoom="0.1" x="12172.421191786681" y="1810.3735203196866" />
+          <settings layout="Hierarchic Group" zoom="0.1" x="12172.0" y="1810.0" />
           <SelectedNodes />
           <Categories />
+          <SCOPE>All</SCOPE>
           <VISIBILITY>All</VISIBILITY>
         </state>
       </provider>
@@ -4714,22 +4671,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/websocket-service/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="29" column="21" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
+        <state relative-caret-position="125">
+          <caret line="23" column="21" lean-forward="true" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/service/BetOrderServiceV1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+        <state relative-caret-position="2625">
+          <caret line="120" column="65" selection-start-line="120" selection-start-column="65" selection-end-line="120" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/websocket-service/src/main/resources/user.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/websocket-service/src/main/java/com/jt/app/WebSocketApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/websocket-service/src/main/resources/application.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
+        <state relative-caret-position="500">
           <caret line="20" column="20" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/websocket-service/src/test/com/jt/app/TestApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="312" column="33" selection-start-line="312" selection-start-column="33" selection-end-line="312" selection-end-column="33" />
         </state>
       </provider>
     </entry>
