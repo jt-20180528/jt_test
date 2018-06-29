@@ -11,6 +11,7 @@ import com.jt.app.service.LotteryUserServiceV1;
 import com.jt.app.service.TenementServiceV1;
 import com.jt.app.service.UserServiceV1;
 import com.jt.app.task.SendAwardTask;
+import com.jt.app.util.EncryptUtil;
 import com.jt.app.util.TimeUtil;
 import org.apache.http.util.Asserts;
 import org.junit.Test;
@@ -367,4 +368,55 @@ public class TestApplication {
         logger.info("获取临时表成功！数据记录数为：{}", betOrderTemps.size());
     }
 
+    public List<User> globalBatchUser(Integer addNum, String nameFlag) {
+        List<User> users = new ArrayList<User>(addNum + 1);
+        User user = null;
+        for (int i = 0; i < addNum; i++) {
+            user = new User();
+            user.setUserName("用户" + nameFlag + i);
+            user.setAddress("广东-广州");
+            user.setCreateTime(TimeUtil.ymdHms2date());
+            user.setUpdateTime(TimeUtil.ymdHms2date());
+            user.setCreateUser("lj" + i);
+            user.setEmail("1245282613@qq.com");
+            user.setLastLoginAddr("广东-广州");
+            user.setLoginName("root" + nameFlag + i);
+            user.setLoginPasswd(EncryptUtil.md5Encode("root" + i));
+            //userServiceV1.addUser(user);
+            users.add(user);
+        }
+        return users;
+    }
+
+    /**
+     * 测试使用jpa向主库添加数据
+     */
+    @Test
+    public void testBatchAdd1WTime() {
+        //首先刪除已有t2測試
+        final String nameFlag = "-t2-";
+        long startTime, endTime = 0;
+        final Integer addNum = 1;
+        final Integer batchSize = 100000;
+        Integer usersNum = userServiceV1.getCountByNameLike(nameFlag);
+        if (usersNum > 0) {
+            startTime = System.currentTimeMillis();
+            Integer delNum = userServiceV1.deleteAllByNameLike(nameFlag);
+            endTime = System.currentTimeMillis();
+            if (delNum > 0) {
+                logger.info("刪除t2测试数据一共：【" + usersNum + "】条，用时：【" + (endTime - startTime) / 1000 + "】秒");
+            }
+        }
+        List<User> users = this.globalBatchUser(addNum, nameFlag);
+        User u = userServiceV1.getUserRepository().saveAndFlush(users.get(0));
+        startTime = System.currentTimeMillis();
+        //Integer reslut = userServiceV1.batchInsert(users, batchSize);
+        endTime = System.currentTimeMillis();
+        /*if (reslut == 1) {
+            logger.info("批量插入【" + batchSize + "】成功！");
+        } else {
+            logger.error("批量插入【" + batchSize + "】失败！");
+        }*/
+        logger.info("添加" + addNum + "条记录花费时间：【" + (endTime - startTime) / 1000 + "】秒");
+    }
 }

@@ -17,8 +17,8 @@ spring:
     cache: false
   datasource:
       #url: jdbc:mysql://192.168.0.149:3306/jt_test?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=Hongkong  ##连接wendos mysql8.0使用
-      url: jdbc:mysql://192.168.0.143:8066/jt_test?useSSL=false
-      username: root
+      url: jdbc:mysql://192.168.0.23:8066/jt_test?useSSL=false
+      username: root1
       password: 123456
       #url: jdbc:mysql://192.168.0.205:3306/jt_test?characterEncoding=UTF-8&useSSL=true
       #username: jt_test

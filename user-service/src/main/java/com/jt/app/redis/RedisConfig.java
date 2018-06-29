@@ -38,14 +38,14 @@ public class RedisConfig {
      * 然后通过@ConfigurationProperties就能把值注入进Config对象中
      * @return
      */
-    @Bean(value="redisConfig")
+    @Bean
     @ConfigurationProperties(prefix = "spring.redis.pool")
     public JedisPoolConfig getRedisConfig() {
         JedisPoolConfig config = new JedisPoolConfig();
         return config;
     }
 
-    @Bean(value="connectionFactory")
+    @Bean
     @ConfigurationProperties(prefix = "spring.redis")
     public JedisConnectionFactory getConnectionFactory() {
         JedisConnectionFactory factory = new JedisConnectionFactory();
