@@ -396,7 +396,7 @@ public class TestApplication {
         //首先刪除已有t2測試
         final String nameFlag = "-t2-";
         long startTime, endTime = 0;
-        final Integer addNum = 1;
+        final Integer addNum = 100;
         final Integer batchSize = 100000;
         Integer usersNum = userServiceV1.getCountByNameLike(nameFlag);
         if (usersNum > 0) {
@@ -408,9 +408,9 @@ public class TestApplication {
             }
         }
         List<User> users = this.globalBatchUser(addNum, nameFlag);
-        User u = userServiceV1.getUserRepository().saveAndFlush(users.get(0));
+        //userServiceV1.batchInsert(users,batchSize);
         startTime = System.currentTimeMillis();
-        //Integer reslut = userServiceV1.batchInsert(users, batchSize);
+        Integer reslut = userServiceV1.batchInsert(users, batchSize);
         endTime = System.currentTimeMillis();
         /*if (reslut == 1) {
             logger.info("批量插入【" + batchSize + "】成功！");
