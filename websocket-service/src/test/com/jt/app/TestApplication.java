@@ -79,7 +79,7 @@ public class TestApplication {
             logger.info("{}个租户创建完成！", tenementNum);
         }
         //为每个租户创建1万个用户
-        final int user1w = 10000;
+        final int user1w = 100000;
         List<Tenement> tenementList = tenementServiceV1.getTenementRepository().findAll();
         if (tenementList == null || tenementList.size() != tenementNum) {
             Asserts.check(false, "创建" + tenementNum + "个租户出错！");
@@ -285,12 +285,12 @@ public class TestApplication {
 
     @Test
     public void testInsertBetOrder() {
-        final int recodeNum = 10000;
+        final int recodeNum = 100000;
         final String tableName = "t_bet_order_temp";
         String prefix = "";
         double rate = 1.0;
         Integer lotteryNumberId = 10000;
-        boolean isMultiTenant = false; //是否清除原有记录
+        boolean isMultiTenant = true; //是否清除原有记录
         boolean isCreateTempTable = true;
         if (tableName.equals("t_bet_order_temp")) {
             prefix = "temp-";
@@ -311,7 +311,7 @@ public class TestApplication {
 
         //bet_order表需要大量数据，不轻易删除
         if (tableName.equals("t_bet_order_temp")) {
-            if (!isMultiTenant) {
+            if (isMultiTenant) {
                 if (betOrderCount > 0) {
                     logger.info("表{}中存在记录{}条，需要刪除！", tableName, betOrderCount);
                     startTime = System.currentTimeMillis();
@@ -368,6 +368,7 @@ public class TestApplication {
         logger.info("获取临时表成功！数据记录数为：{}", betOrderTemps.size());
     }
 
+
     public List<User> globalBatchUser(Integer addNum, String nameFlag) {
         List<User> users = new ArrayList<User>(addNum + 1);
         User user = null;
@@ -408,9 +409,13 @@ public class TestApplication {
             }
         }
         List<User> users = this.globalBatchUser(addNum, nameFlag);
+        //使用Jpa批量提交方式
         //userServiceV1.batchInsert(users,batchSize);
         startTime = System.currentTimeMillis();
-        Integer reslut = userServiceV1.batchInsert(users, batchSize);
+        //使用jpa直接保存方式
+        userServiceV1.getUserRepository().save(users);
+        //使用sql拼接方式
+
         endTime = System.currentTimeMillis();
         /*if (reslut == 1) {
             logger.info("批量插入【" + batchSize + "】成功！");

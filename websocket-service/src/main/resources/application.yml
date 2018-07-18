@@ -17,7 +17,7 @@ spring:
     cache: false
   datasource:
       #url: jdbc:mysql://192.168.0.149:3306/jt_test?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=Hongkong  ##连接wendos mysql8.0使用
-      url: jdbc:mysql://192.168.0.23:8066/jt_test?useSSL=false
+      url: jdbc:mysql://192.168.93.128:8066/jt_test?useSSL=false&autoReconnect=true
       username: root1
       password: 123456
       #url: jdbc:mysql://192.168.0.205:3306/jt_test?characterEncoding=UTF-8&useSSL=true
@@ -46,7 +46,7 @@ spring:
 
   #spring-boot整合单机版redis redis作为缓存
   redis:
-    hostName: 192.168.0.142
+    hostName: 192.168.93.128
     port: 6379
     password: 123456
     database: 0 #默认使用db0
